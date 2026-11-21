@@ -88,6 +88,58 @@
     height: auto;
   }
 
+  /* Full Screen Video Overlay Styles */
+  #fullscreen-video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+
+  #fullscreen-video-overlay.video-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .video-container-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .video-container-wrapper iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    transform: translate(-50%, -50%);
+    border: none;
+    pointer-events: none;
+  }
+
+  @media (min-aspect-ratio: 16/9) {
+    .video-container-wrapper iframe {
+      height: 56.25vw;
+    }
+  }
+
+  @media (max-aspect-ratio: 16/9) {
+    .video-container-wrapper iframe {
+      width: 177.78vh;
+    }
+  }
+
   .wrap {
     width: 100%;
     max-width: 1080px;
@@ -156,6 +208,99 @@
     padding: 1px 5px;
     border-radius: 10px;
     font-weight: 700;
+  }
+
+  /* Settings Dropdown & Agent Controls */
+  .settings-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .settings-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 30px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.07);
+    color: var(--ink);
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .settings-btn:hover {
+    transform: translateY(-2px);
+    border-color: var(--brass);
+    background: rgba(56, 189, 248, 0.16);
+  }
+
+  .settings-btn.agent-active {
+    border-color: var(--whatsapp-green);
+    background: rgba(37, 211, 102, 0.18);
+    color: var(--whatsapp-green);
+  }
+
+  .settings-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 175px;
+    background: #1C2541;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 10px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
+    padding: 6px;
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 500;
+  }
+
+  .settings-dropdown.open {
+    display: flex;
+  }
+
+  .settings-dropdown button {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    color: #fff;
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.15s ease;
+  }
+
+  .settings-dropdown button:hover {
+    background: rgba(56, 189, 248, 0.18);
+    color: var(--brass);
+  }
+
+  .agent-banner-btn {
+    background: rgba(37, 211, 102, 0.16);
+    border: 1px solid var(--whatsapp-green);
+    color: var(--whatsapp-green);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .agent-banner-btn:hover {
+    background: rgba(37, 211, 102, 0.28);
   }
 
   .page {
@@ -585,9 +730,32 @@
   .pro-info h3,
   .pro-info .place,
   .pro-info .role,
-  .pro-info .exp {
+  .pro-info .exp,
+  .pro-bio-text {
     overflow-wrap: anywhere;
     word-break: break-word;
+  }
+
+  .pro-bio-text {
+    font-size: 0.78rem;
+    color: #CBD5E1;
+    line-height: 1.4;
+    background: rgba(11, 19, 43, 0.35);
+    padding: 6px 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .pro-price-pill {
+    display: inline-block;
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--whatsapp-green);
+    background: rgba(37, 211, 102, 0.14);
+    border: 1px solid rgba(37, 211, 102, 0.35);
+    padding: 2px 7px;
+    border-radius: 6px;
+    margin-top: 3px;
   }
 
   .wa-btn {
@@ -688,9 +856,45 @@
   }
 
   .tier-badge.badge-silver {
-    background: rgba(226, 232, 240, 0.18);
-    color: var(--silver-color);
-    border: 1px solid rgba(226, 232, 240, 0.3);
+    background: rgba(226, 232, 240, 0.25);
+    color: #F8FAFC;
+    border: 1px solid rgba(226, 232, 240, 0.55);
+    box-shadow: 0 0 10px rgba(226, 232, 240, 0.25);
+  }
+
+  /* Agent-only card actions (strictly hidden for normal visitors) */
+  .agent-card-actions {
+    display: none;
+    gap: 6px;
+    margin-top: 4px;
+    padding-top: 6px;
+    border-top: 1px dashed rgba(56, 189, 248, 0.3);
+  }
+
+  body.agent-unlocked .agent-card-actions {
+    display: flex;
+  }
+
+  .agent-card-actions button {
+    flex: 1;
+    padding: 5px 8px;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-card-edit {
+    background: rgba(56, 189, 248, 0.2);
+    color: var(--brass);
+    border: 1px solid rgba(56, 189, 248, 0.4) !important;
+  }
+
+  .btn-card-delete {
+    background: rgba(239, 68, 68, 0.2);
+    color: #FCA5A5;
+    border: 1px solid rgba(239, 68, 68, 0.4) !important;
   }
 
   .heart-btn {
@@ -1055,7 +1259,7 @@
     border-radius: 14px;
     padding: 16px;
     width: 100%;
-    max-width: 420px;
+    max-width: 440px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     max-height: 92vh;
     overflow-y: auto;
@@ -1086,7 +1290,7 @@
     margin-bottom: 2px;
   }
 
-  .form-group input, .form-group select {
+  .form-group input, .form-group select, .form-group textarea {
     width: 100%;
     padding: 8px;
     border-radius: 6px;
@@ -1094,8 +1298,14 @@
     border: 1px solid var(--line);
     color: #fff;
     font-size: 0.82rem;
+    font-family: inherit;
     outline: none;
     box-sizing: border-box;
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 62px;
   }
 
   .form-group select option {
@@ -1103,8 +1313,200 @@
     color: #fff;
   }
 
-  .form-group input:focus, .form-group select:focus {
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
     border-color: var(--brass);
+  }
+
+  .form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  /* Agent Dashboard Window Styles */
+  .agent-dashboard-modal {
+    max-width: 680px;
+    border: 1px solid rgba(56, 189, 248, 0.45);
+  }
+
+  .agent-dash-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+  }
+
+  .agent-dash-actions {
+    display: flex;
+    gap: 6px;
+  }
+
+  .btn-logout {
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid rgba(239, 68, 68, 0.5);
+    color: #FCA5A5;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .btn-logout:hover {
+    background: rgba(239, 68, 68, 0.35);
+  }
+
+  .photo-upload-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(11, 19, 43, 0.5);
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px dashed rgba(56, 189, 248, 0.4);
+  }
+
+  .photo-preview-thumb {
+    width: 54px;
+    height: 54px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid var(--brass);
+    background: rgba(255, 255, 255, 0.05);
+    flex-shrink: 0;
+  }
+
+  .app-chip-input-row {
+    display: flex;
+    gap: 6px;
+  }
+
+  .app-chip-input-row button {
+    padding: 0 12px;
+    border-radius: 6px;
+    border: 1px solid var(--brass);
+    background: rgba(56, 189, 248, 0.2);
+    color: var(--brass);
+    font-weight: 700;
+    font-size: 0.78rem;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .app-chips-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 6px;
+  }
+
+  .app-chip-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(56, 189, 248, 0.16);
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+  }
+
+  .app-chip-item button {
+    background: none;
+    border: none;
+    color: #FCA5A5;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.8rem;
+    line-height: 1;
+  }
+
+  .saved-agent-list {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+  }
+
+  .saved-agent-list h3 {
+    font-size: 0.92rem;
+    color: var(--brass);
+    margin-bottom: 8px;
+  }
+
+  .saved-agent-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: rgba(11, 19, 43, 0.55);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 6px;
+  }
+
+  .saved-agent-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .saved-agent-meta img {
+    width: 38px;
+    height: 38px;
+    border-radius: 6px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .saved-agent-info {
+    min-width: 0;
+  }
+
+  .saved-agent-info strong {
+    display: block;
+    font-size: 0.82rem;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .saved-agent-info span {
+    font-size: 0.7rem;
+    color: var(--muted);
+  }
+
+  .saved-agent-btns {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+
+  .saved-agent-btns button {
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+  }
+
+  .login-error-msg {
+    color: #FCA5A5;
+    background: rgba(239, 68, 68, 0.18);
+    border: 1px solid rgba(239, 68, 68, 0.45);
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    margin-top: 6px;
+    display: none;
   }
 
   .tier-rates-box {
@@ -1472,61 +1874,6 @@
 
   .enhanced-control:hover { transform: translateY(-2px); border-color: var(--brass); background: rgba(56, 189, 248, 0.16); }
 
-  .site-search-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 2000;
-    display: none;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 12vh 16px 24px;
-    background: rgba(2, 6, 23, 0.72);
-    backdrop-filter: blur(12px);
-    box-sizing: border-box;
-  }
-
-  .site-search-overlay.active { display: flex; }
-
-  .site-search-panel {
-    width: min(620px, 100%);
-    overflow: hidden;
-    border: 1px solid rgba(125, 211, 252, 0.35);
-    border-radius: 18px;
-    background: rgba(15, 23, 42, 0.96);
-    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
-  }
-
-  .site-search-input {
-    width: 100%;
-    padding: 17px 18px;
-    border: 0;
-    border-bottom: 1px solid var(--line);
-    outline: 0;
-    background: transparent;
-    color: #fff;
-    font: inherit;
-    font-size: 1rem;
-    box-sizing: border-box;
-  }
-
-  .site-search-results { max-height: 52vh; overflow: auto; padding: 8px; }
-
-  .site-search-result {
-    display: block;
-    width: 100%;
-    padding: 11px 12px;
-    border: 0;
-    border-radius: 10px;
-    background: transparent;
-    color: #e2e8f0;
-    cursor: pointer;
-    text-align: left;
-    box-sizing: border-box;
-  }
-
-  .site-search-result:hover { background: rgba(56, 189, 248, 0.14); color: #fff; }
-  .site-search-empty { padding: 18px 12px; color: var(--muted); text-align: center; }
-
   .toast-stack {
     position: fixed;
     right: 16px;
@@ -1583,18 +1930,445 @@
     opacity: 0.5;
     mix-blend-mode: screen;
   }
-
 </style>
+<script src="https://player.vimeo.com/api/player.js"></script>
 <script>
   let activeGridId = '';
   let activeServiceType = '';
   const adminWhatsApp = "919496806919";
+
+  // Agent Mode State
+  const AGENT_STORAGE_KEY = 'shnyorgin_agent_workers_v1';
+  const AGENT_SESSION_KEY = 'shnyorgin_agent_unlocked';
+  let isAgentMode = false;
+  let editingWorkerId = null;
+  let tempAgentApps = [];
+  let tempAgentPhotoData = '';
+
+  const DEFAULT_AVATAR = 'data:image/svg+xml;utf8,' + encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><rect width="120" height="120" fill="#1C2541"/><circle cx="60" cy="44" r="22" fill="#38BDF8"/><path d="M22 108c0-21 17-36 38-36s38 15 38 36" fill="#38BDF8"/></svg>'
+  );
 
   const currentFilters = {
     'editors-page': 'all',
     'photo-video-page': 'all',
     'tech-page': 'all'
   };
+
+  function getStoredWorkers() {
+    try {
+      return JSON.parse(localStorage.getItem(AGENT_STORAGE_KEY) || '[]');
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function saveStoredWorkers(workers) {
+    localStorage.setItem(AGENT_STORAGE_KEY, JSON.stringify(workers));
+  }
+
+  function updateAgentUIState() {
+    document.body.classList.toggle('agent-unlocked', isAgentMode);
+    const settingsBtn = document.getElementById('settingsGearBtn');
+    const agentBadgeBtn = document.getElementById('headerAgentBadge');
+    if (settingsBtn) {
+      settingsBtn.classList.toggle('agent-active', isAgentMode);
+    }
+    if (agentBadgeBtn) {
+      agentBadgeBtn.style.display = isAgentMode ? 'inline-flex' : 'none';
+    }
+  }
+
+  function toggleSettingsMenu(event) {
+    if (event) event.stopPropagation();
+    const dropdown = document.getElementById('settingsDropdown');
+    if (!dropdown) return;
+    dropdown.classList.toggle('open');
+  }
+
+  function handleAgentModeMenuClick() {
+    document.getElementById('settingsDropdown')?.classList.remove('open');
+    if (isAgentMode) {
+      openAgentDashboard();
+    } else {
+      openAgentLoginModal();
+    }
+  }
+
+  function openAgentLoginModal() {
+    document.getElementById('agentUsername').value = '';
+    document.getElementById('agentPassword').value = '';
+    const err = document.getElementById('agentLoginError');
+    if (err) err.style.display = 'none';
+    document.getElementById('agentLoginModal').classList.add('active');
+    setTimeout(() => document.getElementById('agentUsername').focus(), 50);
+  }
+
+  function closeAgentLoginModal() {
+    document.getElementById('agentLoginModal').classList.remove('active');
+  }
+
+  function submitAgentLogin(event) {
+    if (event) event.preventDefault();
+    const user = document.getElementById('agentUsername').value.trim();
+    const pass = document.getElementById('agentPassword').value;
+    const err = document.getElementById('agentLoginError');
+
+    if (user === 'admin' && pass === 'password') {
+      isAgentMode = true;
+      sessionStorage.setItem(AGENT_SESSION_KEY, 'true');
+      updateAgentUIState();
+      closeAgentLoginModal();
+      openAgentDashboard();
+      showToast('Agent mode unlocked', 'success');
+    } else {
+      if (err) {
+        err.textContent = 'Invalid username or password. Please try again.';
+        err.style.display = 'block';
+      }
+    }
+  }
+
+  function logoutAgentMode() {
+    isAgentMode = false;
+    sessionStorage.removeItem(AGENT_SESSION_KEY);
+    updateAgentUIState();
+    closeAgentDashboard();
+    showToast('Logged out of Agent mode');
+  }
+
+  function openAgentDashboard() {
+    if (!isAgentMode) {
+      openAgentLoginModal();
+      return;
+    }
+    resetAgentForm();
+    renderAgentSavedList();
+    document.getElementById('agentDashboardModal').classList.add('active');
+  }
+
+  function closeAgentDashboard() {
+    document.getElementById('agentDashboardModal').classList.remove('active');
+    resetAgentForm();
+  }
+
+  function handleAgentPhotoUpload(event) {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const img = new Image();
+      img.onload = function() {
+        const canvas = document.createElement('canvas');
+        const maxSide = 360;
+        let w = img.width;
+        let h = img.height;
+        if (w > h && w > maxSide) {
+          h = Math.round((h * maxSide) / w);
+          w = maxSide;
+        } else if (h >= w && h > maxSide) {
+          w = Math.round((w * maxSide) / h);
+          h = maxSide;
+        }
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, w, h);
+        tempAgentPhotoData = canvas.toDataURL('image/jpeg', 0.82);
+        document.getElementById('agentPhotoPreview').src = tempAgentPhotoData;
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function addAgentAppChip() {
+    const input = document.getElementById('agentAppInput');
+    const val = input.value.trim();
+    if (!val) return;
+    val.split(',').forEach(part => {
+      const cleaned = part.trim();
+      if (cleaned && !tempAgentApps.includes(cleaned)) {
+        tempAgentApps.push(cleaned);
+      }
+    });
+    input.value = '';
+    renderAgentAppChips();
+  }
+
+  function removeAgentAppChip(index) {
+    tempAgentApps.splice(index, 1);
+    renderAgentAppChips();
+  }
+
+  function renderAgentAppChips() {
+    const container = document.getElementById('agentAppsChipsList');
+    container.innerHTML = '';
+    tempAgentApps.forEach((app, idx) => {
+      const chip = document.createElement('span');
+      chip.className = 'app-chip-item';
+      chip.innerHTML = `${escapeHtml(app)} <button type="button" onclick="removeAgentAppChip(${idx})" title="Remove">&times;</button>`;
+      container.appendChild(chip);
+    });
+  }
+
+  function resetAgentForm() {
+    editingWorkerId = null;
+    tempAgentApps = [];
+    tempAgentPhotoData = DEFAULT_AVATAR;
+    document.getElementById('agentFormHeading').textContent = 'Add Worker Profile';
+    document.getElementById('agentSaveBtn').textContent = 'Save Profile';
+    document.getElementById('agentCancelEditBtn').style.display = 'none';
+    document.getElementById('agentPhotoInput').value = '';
+    document.getElementById('agentPhotoPreview').src = DEFAULT_AVATAR;
+    document.getElementById('agentCategory').value = 'editors-grid';
+    document.getElementById('agentName').value = '';
+    document.getElementById('agentAge').value = '';
+    document.getElementById('agentLocation').value = '';
+    document.getElementById('agentContact').value = '';
+    document.getElementById('agentShortBio').value = '';
+    document.getElementById('agentAppInput').value = '';
+    document.getElementById('agentPriceAmount').value = '';
+    document.getElementById('agentPriceUnit').value = 'per project';
+    document.getElementById('agentBadge').value = 'gold';
+    document.getElementById('agentDescription').value = '';
+    renderAgentAppChips();
+  }
+
+  function saveAgentWorkerProfile(event) {
+    if (event) event.preventDefault();
+    if (!isAgentMode) return;
+
+    const pendingApp = document.getElementById('agentAppInput').value.trim();
+    if (pendingApp) {
+      addAgentAppChip();
+    }
+
+    const category = document.getElementById('agentCategory').value;
+    const name = document.getElementById('agentName').value.trim();
+    const age = document.getElementById('agentAge').value.trim();
+    const location = document.getElementById('agentLocation').value.trim();
+    const contact = document.getElementById('agentContact').value.trim();
+    const shortBio = document.getElementById('agentShortBio').value.trim();
+    const priceAmount = document.getElementById('agentPriceAmount').value.trim();
+    const priceUnit = document.getElementById('agentPriceUnit').value;
+    const badge = document.getElementById('agentBadge').value;
+    const description = document.getElementById('agentDescription').value.trim();
+
+    if (!name || !location || !contact) {
+      alert('Please enter Name, Location, and Contact number.');
+      return;
+    }
+
+    const workers = getStoredWorkers();
+    const workerObj = {
+      id: editingWorkerId || ('worker-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6)),
+      category,
+      photo: tempAgentPhotoData || DEFAULT_AVATAR,
+      name,
+      age,
+      location,
+      contact,
+      shortBio,
+      apps: tempAgentApps.length ? [...tempAgentApps] : ['Specialist'],
+      priceAmount,
+      priceUnit,
+      badge,
+      description
+    };
+
+    if (editingWorkerId) {
+      const idx = workers.findIndex(w => w.id === editingWorkerId);
+      if (idx > -1) workers[idx] = workerObj;
+      showToast('Profile updated!', 'success');
+    } else {
+      workers.push(workerObj);
+      showToast('New worker profile published!', 'success');
+    }
+
+    saveStoredWorkers(workers);
+    renderAllAgentProfiles();
+    renderAgentSavedList();
+    resetAgentForm();
+  }
+
+  function editAgentWorker(workerId) {
+    if (!isAgentMode) return;
+    const workers = getStoredWorkers();
+    const w = workers.find(item => item.id === workerId);
+    if (!w) return;
+
+    editingWorkerId = w.id;
+    tempAgentPhotoData = w.photo || DEFAULT_AVATAR;
+    tempAgentApps = Array.isArray(w.apps) ? [...w.apps] : [];
+
+    document.getElementById('agentFormHeading').textContent = `Edit Profile: ${w.name}`;
+    document.getElementById('agentSaveBtn').textContent = 'Update Profile';
+    document.getElementById('agentCancelEditBtn').style.display = 'inline-block';
+    document.getElementById('agentPhotoPreview').src = tempAgentPhotoData;
+    document.getElementById('agentCategory').value = w.category || 'editors-grid';
+    document.getElementById('agentName').value = w.name || '';
+    document.getElementById('agentAge').value = w.age || '';
+    document.getElementById('agentLocation').value = w.location || '';
+    document.getElementById('agentContact').value = w.contact || '';
+    document.getElementById('agentShortBio').value = w.shortBio || '';
+    document.getElementById('agentPriceAmount').value = w.priceAmount || '';
+    document.getElementById('agentPriceUnit').value = w.priceUnit || 'per project';
+    document.getElementById('agentBadge').value = w.badge || 'silver';
+    document.getElementById('agentDescription').value = w.description || '';
+    renderAgentAppChips();
+
+    const modal = document.getElementById('agentDashboardModal');
+    if (!modal.classList.contains('active')) {
+      modal.classList.add('active');
+    }
+    modal.querySelector('.modal').scrollTop = 0;
+  }
+
+  function deleteAgentWorker(workerId) {
+    if (!isAgentMode) return;
+    if (!confirm('Are you sure you want to delete this profile?')) return;
+    let workers = getStoredWorkers();
+    workers = workers.filter(w => w.id !== workerId);
+    saveStoredWorkers(workers);
+
+    let saved = getSavedProfileIds().filter(id => id !== workerId);
+    localStorage.setItem('saved_profiles', JSON.stringify(saved));
+
+    if (editingWorkerId === workerId) {
+      resetAgentForm();
+    }
+    renderAllAgentProfiles();
+    renderAgentSavedList();
+    showToast('Profile deleted', 'warning');
+  }
+
+  function getCategoryLabel(gridId) {
+    if (gridId === 'editors-grid') return 'Editors';
+    if (gridId === 'photo-video-grid') return 'Photo/Videography';
+    if (gridId === 'tech-grid') return 'IT & Tech Support';
+    return 'General';
+  }
+
+  function renderAgentSavedList() {
+    const container = document.getElementById('agentSavedProfilesList');
+    if (!container) return;
+    const workers = getStoredWorkers();
+    if (!workers.length) {
+      container.innerHTML = '<p style="font-size:0.76rem;color:var(--muted);">No saved worker profiles yet. Use the form above to add one.</p>';
+      return;
+    }
+    container.innerHTML = '';
+    workers.forEach(w => {
+      const row = document.createElement('div');
+      row.className = 'saved-agent-row';
+      row.innerHTML = `
+        <div class="saved-agent-meta">
+          <img src="${escapeHtml(w.photo || DEFAULT_AVATAR)}" alt="${escapeHtml(w.name)}">
+          <div class="saved-agent-info">
+            <strong>${escapeHtml(w.name)} (${w.badge.toUpperCase()})</strong>
+            <span>${escapeHtml(getCategoryLabel(w.category))} • 📍 ${escapeHtml(w.location)}</span>
+          </div>
+        </div>
+        <div class="saved-agent-btns">
+          <button type="button" class="btn-card-edit" onclick="editAgentWorker('${w.id}')">Edit</button>
+          <button type="button" class="btn-card-delete" onclick="deleteAgentWorker('${w.id}')">Delete</button>
+        </div>
+      `;
+      container.appendChild(row);
+    });
+  }
+
+  function buildWorkerCardElement(w) {
+    const cleanPhone = (w.contact || '').replace(/[^0-9]/g, '') || adminWhatsApp;
+    const serviceLabel = getCategoryLabel(w.category);
+    const encodedMsg = encodeURIComponent(`Hi ${w.name}, I found your profile on shnyorgin (${serviceLabel}) and would like to hire you.`);
+    const waUrl = `https://api.whatsapp.com/send?phone=${encodeURIComponent(cleanPhone)}&text=${encodedMsg}`;
+
+    const appsHtml = (w.apps || []).map(app => `<span>${escapeHtml(app)}</span>`).join('');
+    const badgeHtml = getBadgeSvg(w.badge || 'silver');
+    const ageText = w.age ? ` • ${escapeHtml(w.age)} yrs` : '';
+    const priceHtml = w.priceAmount
+      ? `<div class="pro-price-pill">₹${escapeHtml(w.priceAmount)} ${escapeHtml(w.priceUnit || '')}</div>`
+      : '';
+    const descHtml = w.description
+      ? `<div class="pro-bio-text">${escapeHtml(w.description)}</div>`
+      : '';
+
+    const card = document.createElement('div');
+    card.className = 'pro-card agent-rendered-card';
+    card.setAttribute('data-person-id', w.id);
+    card.setAttribute('data-tier', w.badge || 'silver');
+    card.innerHTML = `
+      ${badgeHtml}
+      <button class="heart-btn" data-id="${w.id}" onclick="toggleSaveProfile('${w.id}', event)" title="Save Profile">
+        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      </button>
+      <div class="pro-card-header">
+        <div class="profile-header-flex">
+          <img src="${escapeHtml(w.photo || DEFAULT_AVATAR)}" alt="${escapeHtml(w.name)}" class="hemin-photo-img" onclick="openImageModal(this.src)">
+          <div class="pro-info">
+            <h3>${escapeHtml(w.name)}</h3>
+            <div class="place">📍 ${escapeHtml(w.location)}${ageText}</div>
+            ${w.shortBio ? `<div class="role">${escapeHtml(w.shortBio)}</div>` : ''}
+            ${priceHtml}
+          </div>
+        </div>
+        <a href="${waUrl}" class="wa-btn" target="_blank">Chat</a>
+      </div>
+      ${descHtml}
+      <div class="apps-section">
+        <div class="apps-section-title">Software / Apps</div>
+        <div class="pro-apps">${appsHtml}</div>
+      </div>
+      <div class="rating-section">
+        <span class="rating-title">Rate Profile:</span>
+        <div class="rating-stars interactive-stars" id="stars-${w.id}">
+          <span onclick="setRating('${w.id}', 1)">★</span>
+          <span onclick="setRating('${w.id}', 2)">★</span>
+          <span onclick="setRating('${w.id}', 3)">★</span>
+          <span onclick="setRating('${w.id}', 4)">★</span>
+          <span onclick="setRating('${w.id}', 5)">★</span>
+        </div>
+      </div>
+      <div class="agent-card-actions">
+        <button type="button" class="btn-card-edit" onclick="editAgentWorker('${w.id}')">✏️ Edit Profile</button>
+        <button type="button" class="btn-card-delete" onclick="deleteAgentWorker('${w.id}')">🗑️ Delete</button>
+      </div>
+    `;
+    return card;
+  }
+
+  function renderAllAgentProfiles() {
+    document.querySelectorAll('.agent-rendered-card').forEach(el => el.remove());
+
+    const workers = getStoredWorkers();
+    workers.forEach(w => {
+      const targetGrid = document.getElementById(w.category || 'editors-grid');
+      if (targetGrid) {
+        const card = buildWorkerCardElement(w);
+        targetGrid.appendChild(card);
+        initHoverStars(card);
+      }
+    });
+
+    loadSavedRatings();
+    updateCategoryCounts();
+    updateHeartIcons();
+
+    Object.keys(currentFilters).forEach(pageId => {
+      const gridMap = {
+        'editors-page': 'editors-grid',
+        'photo-video-page': 'photo-video-grid',
+        'tech-page': 'tech-grid'
+      };
+      filterTier(pageId, gridMap[pageId], currentFilters[pageId]);
+    });
+
+    if (document.getElementById('saved-page')?.classList.contains('active')) {
+      renderSavedProfiles();
+    }
+  }
 
   function openImageModal(src) {
     const modal = document.getElementById('imageModal');
@@ -1620,7 +2394,6 @@
     smoothScrollTo(0);
   }
 
-  /* Cross-device smooth scroll implementation */
   function smoothScrollTo(targetY) {
     const startY = window.pageYOffset || document.documentElement.scrollTop;
     const distance = targetY - startY;
@@ -1679,7 +2452,7 @@
 
   function escapeHtml(text) {
     const div = document.createElement('div');
-    div.innerText = text;
+    div.innerText = text == null ? '' : String(text);
     return div.innerHTML;
   }
 
@@ -1713,7 +2486,7 @@
     });
 
     localStorage.setItem(`user_star_${personId}`, rating);
-    alert(`Thank you for giving ${rating} Star(s)!`);
+    showToast(`Thank you for giving ${rating} Star(s)!`, 'success');
   }
 
   function loadSavedRatings() {
@@ -1821,13 +2594,14 @@
         }
       });
       updateHeartIcons();
-    }, 400);
+    }, 300);
   }
 
   function filterTier(pageId, gridId, tier) {
     currentFilters[pageId] = tier;
 
     const pageElem = document.getElementById(pageId);
+    if (!pageElem) return;
     const tabs = pageElem.querySelectorAll('.filter-tab');
     tabs.forEach(tab => {
       if (tab.getAttribute('data-tier') === tier) {
@@ -1838,6 +2612,7 @@
     });
 
     const grid = document.getElementById(gridId);
+    if (!grid) return;
     const cards = grid.querySelectorAll('.pro-card[data-person-id]');
     cards.forEach(card => {
       const cardTier = card.getAttribute('data-tier') || 'silver';
@@ -1859,58 +2634,26 @@
     gridId,
     serviceType,
     tier = 'silver',
-    photoUrl = 'https://upload.wikimedia.org/wikipedia/commons/2/26/Cristiano_Ronaldo_Croatia_v_Portugal_2_July_2026-075_%28cropped%29.jpg?utm_source=findshny&utm_campaign=index&utm_content=original'
+    photoUrl = DEFAULT_AVATAR
   ) {
-    const personId = 'user-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8);
-    const encodedMsg = encodeURIComponent(`Hi ${name}, I need ${serviceType}`);
-    const waUrl = `https://api.whatsapp.com/send?phone=${encodeURIComponent(phone)}&text=${encodedMsg}`;
-
-    const appsList = apps.split(',').map(app => `<span>${escapeHtml(app.trim())}</span>`).join('');
-    const badgeHtml = getBadgeSvg(tier);
-
-    const newCard = document.createElement('div');
-    newCard.className = `pro-card`;
-    newCard.setAttribute('data-person-id', personId);
-    newCard.setAttribute('data-tier', tier);
-    newCard.innerHTML = `
-      ${badgeHtml}
-      <button class="heart-btn" data-id="${personId}" onclick="toggleSaveProfile('${personId}', event)" title="Save Profile">
-        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-      </button>
-      <div class="pro-card-header">
-        <div class="profile-header-flex">
-          <img src="${escapeHtml(photoUrl)}" alt="${escapeHtml(name)}" class="hemin-photo-img" onclick="openImageModal('${escapeHtml(photoUrl)}')">
-          <div class="pro-info">
-            <h3>${escapeHtml(name)}</h3>
-            <div class="place">📍 ${escapeHtml(place)}</div>
-            <div class="role">${escapeHtml(role)}</div>
-            <div class="exp">${escapeHtml(exp)}</div>
-          </div>
-        </div>
-        <a href="${waUrl}" class="wa-btn" target="_blank">Chat</a>
-      </div>
-      <div class="apps-section">
-        <div class="apps-section-title">Software / Apps</div>
-        <div class="pro-apps">${appsList}</div>
-      </div>
-      <div class="rating-section">
-        <span class="rating-title">Rate Profile:</span>
-        <div class="rating-stars interactive-stars" id="stars-${personId}">
-          <span onclick="setRating('${personId}', 1)">★</span>
-          <span onclick="setRating('${personId}', 2)">★</span>
-          <span onclick="setRating('${personId}', 3)">★</span>
-          <span onclick="setRating('${personId}', 4)">★</span>
-          <span onclick="setRating('${personId}', 5)">★</span>
-        </div>
-      </div>
-    `;
-    const targetGrid = document.getElementById(gridId);
-    if (targetGrid) {
-      targetGrid.appendChild(newCard);
-      updateCategoryCounts();
-      initHoverStars(newCard);
-      updateHeartIcons();
-    }
+    const workers = getStoredWorkers();
+    workers.push({
+      id: 'user-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8),
+      category: gridId,
+      photo: photoUrl,
+      name,
+      age: '',
+      location: place,
+      contact: phone,
+      shortBio: role,
+      apps: apps.split(',').map(a => a.trim()).filter(Boolean),
+      priceAmount: '',
+      priceUnit: '',
+      badge: tier,
+      description: exp
+    });
+    saveStoredWorkers(workers);
+    renderAllAgentProfiles();
   }
 
   function submitProfileForApproval() {
@@ -2136,7 +2879,7 @@
 
     window.addEventListener('scroll', () => {
       const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (window.scrollY / totalScroll) * 100;
+      const progress = totalScroll > 0 ? (window.scrollY / totalScroll) * 100 : 0;
       progressBar.style.width = `${progress}%`;
 
       scrollTopBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
@@ -2177,54 +2920,6 @@
     applyTheme();
   }
 
-  function initSearchPalette(searchButton) {
-    const overlay = document.createElement('div');
-    overlay.className = 'site-search-overlay';
-    overlay.innerHTML = '<div class="site-search-panel"><input class="site-search-input" type="search" placeholder="Search services, profiles, or skills..." aria-label="Search website"><div class="site-search-results"></div></div>';
-    document.body.appendChild(overlay);
-    const input = overlay.querySelector('.site-search-input');
-    const results = overlay.querySelector('.site-search-results');
-
-    function renderResults(query = '') {
-      const term = query.trim().toLowerCase();
-      const items = Array.from(document.querySelectorAll('.card, .pro-card, .creator-card'))
-        .filter(item => !term || item.textContent.toLowerCase().includes(term));
-      results.innerHTML = '';
-      if (!items.length) {
-        results.innerHTML = '<div class="site-search-empty">No matching service or profile found.</div>';
-        return;
-      }
-      items.slice(0, 18).forEach(item => {
-        const result = document.createElement('button');
-        result.className = 'site-search-result';
-        result.textContent = item.textContent.replace(/\s+/g, ' ').trim().slice(0, 120);
-        result.addEventListener('click', () => {
-          const page = item.closest('.page');
-          if (page && !page.classList.contains('active')) showPage(page.id);
-          overlay.classList.remove('active');
-          setTimeout(() => item.scrollIntoView({ behavior: 'smooth', block: 'center' }), 80);
-        });
-        results.appendChild(result);
-      });
-    }
-
-    const open = () => {
-      overlay.classList.add('active');
-      input.value = '';
-      renderResults();
-      setTimeout(() => input.focus(), 0);
-    };
-    searchButton.addEventListener('click', open);
-    input.addEventListener('input', () => renderResults(input.value));
-    overlay.addEventListener('click', event => {
-      if (event.target === overlay) overlay.classList.remove('active');
-    });
-    input.addEventListener('keydown', event => {
-      if (event.key === 'Escape') overlay.classList.remove('active');
-    });
-    window.openSiteSearch = open;
-  }
-
   function initRevealAnimations() {
     document.body.classList.add('js-enhanced');
     const revealItems = document.querySelectorAll('.card, .pro-card, .creator-card, .hero, .cat-heading');
@@ -2259,24 +2954,6 @@
     });
   }
 
-  function initShareButton(button) {
-    button.addEventListener('click', async () => {
-      const shareData = { title: document.title, text: 'Explore FindShny services and specialists.', url: window.location.href };
-      try {
-        if (navigator.share) {
-          await navigator.share(shareData);
-        } else if (navigator.clipboard) {
-          await navigator.clipboard.writeText(window.location.href);
-          showToast('Website link copied to clipboard', 'success');
-        } else {
-          showToast('Copy this page link from your browser address bar');
-        }
-      } catch (error) {
-        if (error.name !== 'AbortError') showToast('Sharing was not available on this device', 'warning');
-      }
-    });
-  }
-
   function initKeyboardShortcuts() {
     document.addEventListener('keydown', event => {
       const tag = document.activeElement?.tagName?.toLowerCase();
@@ -2286,8 +2963,9 @@
       } else if (event.key.toLowerCase() === 's') {
         showPage('saved-page');
       } else if (event.key === 'Escape') {
-        document.querySelector('.site-search-overlay')?.classList.remove('active');
+        document.getElementById('settingsDropdown')?.classList.remove('open');
         closeImageModal();
+        closeAgentLoginModal();
       }
     });
   }
@@ -2342,19 +3020,19 @@
   }
 
   function initEnhancementToolbar() {
-    const wrap = document.querySelector('header .wrap');
-    if (!wrap) return;
-    const toolbar = document.createElement('div');
-    toolbar.className = 'enhanced-toolbar';
-    toolbar.innerHTML = '<button class="enhanced-control theme-control" type="button">Mode</button>';
-    wrap.appendChild(toolbar);
-    initThemeToggle(toolbar.querySelector('.theme-control'));
+    const themeBtn = document.getElementById('themeModeBtn');
+    if (themeBtn) {
+      initThemeToggle(themeBtn);
+    }
   }
 
   function initToastFeedback() {
     document.addEventListener('click', event => {
       if (event.target.closest('.heart-btn')) showToast('Saved profile list updated', 'success');
       if (event.target.closest('.saved-nav-btn')) setTimeout(() => showToast('Showing your saved profiles'), 250);
+      if (!event.target.closest('.settings-wrapper')) {
+        document.getElementById('settingsDropdown')?.classList.remove('open');
+      }
     });
   }
 
@@ -2596,14 +3274,44 @@
     requestAnimationFrame(animate);
   }
 
+  function initIntroVideoPlayer() {
+    const overlay = document.getElementById('fullscreen-video-overlay');
+    const iframe = document.getElementById('intro-vimeo-iframe');
+    if (!overlay || !iframe) return;
+
+    const hideOverlay = () => {
+      overlay.classList.add('video-hidden');
+      setTimeout(() => {
+        overlay.remove();
+      }, 600);
+    };
+
+    if (window.Vimeo && window.Vimeo.Player) {
+      const player = new Vimeo.Player(iframe);
+      
+      player.setMuted(true).then(() => {
+        return player.play();
+      }).catch(err => {
+        console.warn('Autoplay failed:', err);
+      });
+
+      player.on('ended', hideOverlay);
+      player.on('error', hideOverlay);
+    } else {
+      setTimeout(hideOverlay, 10000);
+    }
+  }
+
   window.addEventListener('DOMContentLoaded', () => {
+    initIntroVideoPlayer();
+
     if (!localStorage.getItem('saved_profiles')) {
       localStorage.setItem('saved_profiles', JSON.stringify([]));
     }
 
-    loadSavedRatings();
-    updateCategoryCounts();
-    updateHeartIcons();
+    isAgentMode = sessionStorage.getItem(AGENT_SESSION_KEY) === 'true';
+    updateAgentUIState();
+    renderAllAgentProfiles();
 
     initParticleCanvas();
     initTetrisBackdrop();
@@ -2617,6 +3325,7 @@
     initDraftAutosave();
     initCountPulse();
     initToastFeedback();
+
     const params = new URLSearchParams(window.location.search);
     if (params.get('accept') === 'true') {
       const name = params.get('name');
@@ -2639,6 +3348,13 @@
 </head>
 <body>
 
+<!-- Full Screen Overlay Video -->
+<div id="fullscreen-video-overlay">
+  <div class="video-container-wrapper">
+    <iframe id="intro-vimeo-iframe" src="https://player.vimeo.com/video/1234049959?autoplay=1&amp;muted=1&amp;autopause=0&amp;controls=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Scene"></iframe>
+  </div>
+</div>
+
 <header>
   <div class="wrap">
     <nav>
@@ -2648,6 +3364,27 @@
       </a>
       <a href="https://api.whatsapp.com/send?phone=919496806919&text=Hi,%20I%20am%20a%20customer%20of%20yours." target="_blank">Contact</a>
     </nav>
+
+    <div class="enhanced-toolbar">
+      <button id="headerAgentBadge" class="agent-banner-btn" type="button" style="display:none;" onclick="openAgentDashboard()" title="Open Agent Dashboard">
+        🛡️ Agent
+      </button>
+      <button id="themeModeBtn" class="enhanced-control theme-control" type="button">Light</button>
+      <div class="settings-wrapper">
+        <button id="settingsGearBtn" class="settings-btn" type="button" onclick="toggleSettingsMenu(event)" aria-label="Settings" title="Settings">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
+        <div id="settingsDropdown" class="settings-dropdown">
+          <button type="button" onclick="handleAgentModeMenuClick()">
+            <span>🔐</span>
+            <span>Agent mode</span>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -2677,7 +3414,7 @@
               <h3>🎬 Editors</h3>
             </div>
             <div class="card-slot">
-              <span class="profile-count-badge" id="editors-count-badge">1 out of 10</span>
+              <span class="profile-count-badge" id="editors-count-badge">0 out of 10</span>
               <div class="go-inside-btn">
                 <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </div>
@@ -2846,7 +3583,7 @@
   </div>
 </div>
 
-<!-- Profile Modal -->
+<!-- Public Applicant Profile Modal -->
 <div class="modal-overlay" id="profileModal">
   <div class="modal">
     <h2>Apply for Profile Listing</h2>
@@ -2924,6 +3661,139 @@
   </div>
 </div>
 
+<!-- 1. AGENT LOGIN POPUP -->
+<div class="modal-overlay" id="agentLoginModal">
+  <div class="modal" style="max-width: 360px;">
+    <h2>🔐 Agent Mode Login</h2>
+    <div class="modal-subtitle">Enter credentials to unlock Agent Dashboard</div>
+    <form onsubmit="submitAgentLogin(event)">
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" id="agentUsername" placeholder="Enter username" required>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="agentPassword" placeholder="Enter password" required>
+      </div>
+      <div id="agentLoginError" class="login-error-msg"></div>
+      <div class="modal-actions">
+        <button type="button" class="btn-cancel" onclick="closeAgentLoginModal()">Cancel</button>
+        <button type="submit" class="btn-submit">Login</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- 2. AGENT DASHBOARD WINDOW -->
+<div class="modal-overlay" id="agentDashboardModal">
+  <div class="modal agent-dashboard-modal">
+    <div class="agent-dash-topbar">
+      <div>
+        <h2 id="agentFormHeading">Add Worker Profile</h2>
+        <div class="modal-subtitle" style="margin-bottom:0;">Manage public specialist profiles</div>
+      </div>
+      <div class="agent-dash-actions">
+        <button type="button" class="btn-logout" onclick="logoutAgentMode()">Logout</button>
+        <button type="button" class="btn-cancel" style="padding:5px 10px;border-radius:6px;border:none;cursor:pointer;font-size:0.75rem;font-weight:600;" onclick="closeAgentDashboard()">Close</button>
+      </div>
+    </div>
+
+    <form onsubmit="saveAgentWorkerProfile(event)">
+      <div class="form-group">
+        <label>Display Category *</label>
+        <select id="agentCategory" required>
+          <option value="editors-grid">🎬 Editors (Video & Photo Editing)</option>
+          <option value="photo-video-grid">📸 Photo/Videography</option>
+          <option value="tech-grid">💻 IT & Tech Support</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Person Photo (Upload with Preview)</label>
+        <div class="photo-upload-box">
+          <img id="agentPhotoPreview" src="" alt="Preview" class="photo-preview-thumb">
+          <input type="file" id="agentPhotoInput" accept="image/*" onchange="handleAgentPhotoUpload(event)">
+        </div>
+      </div>
+
+      <div class="form-row-2">
+        <div class="form-group">
+          <label>Full Name *</label>
+          <input type="text" id="agentName" placeholder="e.g. Rahul Krishnan" required>
+        </div>
+        <div class="form-group">
+          <label>Age</label>
+          <input type="number" id="agentAge" min="15" max="90" placeholder="e.g. 24">
+        </div>
+      </div>
+
+      <div class="form-row-2">
+        <div class="form-group">
+          <label>Location *</label>
+          <input type="text" id="agentLocation" placeholder="e.g. Taliparamba, Kannur" required>
+        </div>
+        <div class="form-group">
+          <label>Contact (WhatsApp Number) *</label>
+          <input type="text" id="agentContact" placeholder="e.g. 919496806919" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Short Bio / Role Title</label>
+        <input type="text" id="agentShortBio" placeholder="e.g. Senior Reels & Wedding Video Editor">
+      </div>
+
+      <div class="form-group">
+        <label>Applications / Software Used (Add multiple)</label>
+        <div class="app-chip-input-row">
+          <input type="text" id="agentAppInput" placeholder="e.g. Premiere Pro" onkeydown="if(event.key==='Enter'){event.preventDefault();addAgentAppChip();}">
+          <button type="button" onclick="addAgentAppChip()">+ Add</button>
+        </div>
+        <div id="agentAppsChipsList" class="app-chips-list"></div>
+      </div>
+
+      <div class="form-row-2">
+        <div class="form-group">
+          <label>Price Amount (₹)</label>
+          <input type="text" id="agentPriceAmount" placeholder="e.g. 500">
+        </div>
+        <div class="form-group">
+          <label>Price Unit</label>
+          <select id="agentPriceUnit">
+            <option value="per project">per project</option>
+            <option value="per hour">per hour</option>
+            <option value="per video">per video</option>
+            <option value="per day">per day</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Badge Tier *</label>
+        <select id="agentBadge">
+          <option value="gold">Gold Badge</option>
+          <option value="silver">Silver Badge</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Extra Details / Description</label>
+        <textarea id="agentDescription" placeholder="Describe experience, turnaround time, specialties..."></textarea>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" id="agentCancelEditBtn" class="btn-cancel" style="display:none;" onclick="resetAgentForm()">Cancel Edit</button>
+        <button type="submit" id="agentSaveBtn" class="btn-submit">Save Profile</button>
+      </div>
+    </form>
+
+    <div class="saved-agent-list">
+      <h3>Saved Worker Profiles</h3>
+      <div id="agentSavedProfilesList"></div>
+    </div>
+  </div>
+</div>
+
 <!-- Image Modal -->
 <div class="img-modal-overlay" id="imageModal" onclick="closeImageModal()">
   <img src="" id="modalImage" class="img-modal-content" alt="Enlarged Profile View">
@@ -2935,5 +3805,28 @@
   </div>
 </footer>
 
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBhtMbUquGcJ8HllEGO5Kzhjdl6H63ouss",
+    authDomain: "shnyorgin.firebaseapp.com",
+    projectId: "shnyorgin",
+    storageBucket: "shnyorgin.firebasestorage.app",
+    messagingSenderId: "876701984420",
+    appId: "1:876701984420:web:23daebd68bae36668fe831",
+    measurementId: "G-7RC2SVEMB1"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 </body>
 </html>
