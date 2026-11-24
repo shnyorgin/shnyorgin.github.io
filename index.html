@@ -11,7 +11,7 @@
   <meta name="keywords" content="shnyorgin, orginshny, shanorgin, orginshan, muhammed shan orgin, shnu orgin, orgin shny, shan orgin, shny orgin, shnyorgin website, shnyorgin directory, shnyorgin local services, shnyorgin media, shnyorgin tech, orgin services, orgin network, shnyorgin business, shny orgin logo, shnyorgin official, shnyorgin portal, shnyorgin nellipramba, orginshny taliparamba, shnyorgin kannur, shnyorgin kerala, taliparamba media directory, kannur tech services, nellipramba tech support, taliparamba video editors, kannur video editors, taliparamba photographers, kannur photographers, nellipramba business directory, taliparamba freelancers, kannur media network, kerala video editing services, taliparamba videographers, kannur videographers, kerala tech support, shnyorgin north taliparamba, shnyorgin north kerala, shny orgin kannur, orgin shan taliparamba, muhammed shan orgin kannur, hire video editor in taliparamba, hire photographer in kannur, best video editors in taliparamba, best photographers in kannur, taliparamba freelance hub, kannur digital service directory, kerala media portal, local service directory taliparamba, kannur freelancer directory, taliparamba tech directory, nellipramba local directory, kannur digital experts, shnyorgin video editor, shny video editing, orgin video production, hire video editor kannur, freelance video editor taliparamba, reels editor kerala, instagram video editor kannur, capcut video editor kerala, wedding video editor kannur, youtube video editor taliparamba, cinematic video editing kerala, color grading specialist kannur, short form content editor, promo video editor taliparamba, commercial video editor kerala, local video editor nellipramba, video post production kannur, motion graphics editor kerala, event video editing taliparamba, video montage editor kerala, social media video editor kannur, reel maker taliparamba, professional video editor kannur, affordable video editor kerala, freelance reels editor, best reels editor in kannur, quick video editor taliparamba, custom video editor kerala, vlog editor taliparamba, content creator video editor, shnyorgin photography, shny videography, orgin media team, photographer in taliparamba, photographer in kannur, videographer in taliparamba, videographer in kannur, freelance photographer kerala, wedding photographer taliparamba, event photographer kannur, product photographer kerala, portrait photographer taliparamba, model shoot photographer kannur, cinematographer taliparamba, camera operator kannur, shoot coordinator kerala, commercial photographer kannur, drone videographer taliparamba, candid photographer kannur, local photographer nellipramba, shnyorgin camera services, video shooting team taliparamba, media production team kannur, creative photographer kerala, outdoor shoot photographer taliparamba, studio photographer kannur, e-commerce photographer kerala, event videographer taliparamba, birthday shoot photographer kannur, reel cameraman taliparamba, shnyorgin tech support, shny IT services, orgin technical support, pc support taliparamba, computer hardware support kannur, software setup specialist taliparamba, freelance IT support kerala, pc assembly expert kannur, local tech support nellipramba, web developer taliparamba, website support kannur, frontend developer kerala, netting technical issues kannur, custom PC builder taliparamba, system troubleshooting kerala, network setup taliparamba, tech directory kannur, it specialist taliparamba, digital support services kerala, computer repair consultant kannur, shnyorgin web services, tech solutions taliparamba, hardware specialist kannur, software installation help kerala, tech assistant taliparamba, local computer expert kannur, it consultant taliparamba, web maintenance kerala, shnyorgin IT team, tech freelancer kannur, shnyorgin business directory, hire right specialist shnyorgin, hire specialists in kannur, hire local freelancers taliparamba, media specialist directory kerala, tech specialist directory kannur, find video editors in kerala, find photographers in taliparamba, find IT experts in kannur, local service directory kerala, verified freelancers taliparamba, creative agency directory kannur, best freelancers in nellipramba, book media specialist online, hire freelance video team, shnyorgin portal kerala, orgin service booking, hire digital creator kannur, freelance booking directory, local specialist finder kerala, find tech support near me, find video editor near me, find photographer near me, local service hub taliparamba, kerala creative network, kannur business directory, taliparamba service portal, shnyorgin client portal, hire online freelancer kerala, shnyorgin service finder, how to hire video editor in taliparamba, best place to find photographers in kannur, shnyorgin official business portal, contact shnyorgin for video editing, shnyorgin local media services, hire right specialist in kerala, find freelance tech support in nellipramba, top rated video editors in kannur, affordable photography services taliparamba, shnyorgin contact number, shnyorgin github site, shnyorgin website link, orginshny services in kerala, muhammed shan orgin video editing, shan orgin tech support, local service finder taliparamba kannur, hire professional reels editor in kerala, shnyorgin creative directory, get website tech support in taliparamba, shnyorgin media directory login, top freelancers in taliparamba area, hire digital media specialist kannur, best tech support specialist nellipramba, shnyorgin local freelance platform, shnyorgin official service directory">
   <meta name="robots" content="index, follow">
 
-  <!-- Favicon / Search Logo (Maximum Browser Scale-Up) -->
+  <!-- Favicon / Search Logo -->
   <link rel="icon" type="image/jpeg" sizes="512x512" href="https://cdn.postimage.me/2026/09/20/jarvis.jpg">
   <link rel="icon" type="image/jpeg" sizes="192x192" href="https://cdn.postimage.me/2026/09/20/jarvis.jpg">
   <link rel="icon" type="image/jpeg" sizes="96x96" href="https://cdn.postimage.me/2026/09/20/jarvis.jpg">
@@ -719,6 +719,7 @@
     box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
     flex-shrink: 0;
     cursor: pointer;
+    background: #1C2541;
   }
 
   .pro-info {
@@ -774,6 +775,7 @@
     cursor: pointer;
     flex-shrink: 0;
     transition: transform 0.2s ease, border-color 0.2s ease;
+    background: #1C2541;
   }
 
   .pro-gallery-thumb:hover {
@@ -892,13 +894,14 @@
     box-shadow: 0 0 10px rgba(226, 232, 240, 0.25);
   }
 
-  /* Agent-only card actions (strictly hidden for normal visitors) */
+  /* Agent-only card actions & Adjust controls */
   .agent-card-actions {
     display: none;
-    gap: 6px;
+    flex-wrap: wrap;
+    gap: 5px;
     margin-top: 4px;
     padding-top: 6px;
-    border-top: 1px dashed rgba(56, 189, 248, 0.3);
+    border-top: 1px dashed rgba(56, 189, 248, 0.35);
   }
 
   body.agent-unlocked .agent-card-actions {
@@ -906,22 +909,41 @@
   }
 
   .agent-card-actions button {
-    flex: 1;
     padding: 5px 8px;
     border-radius: 6px;
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     font-weight: 600;
     cursor: pointer;
     border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
   }
 
-  .btn-card-edit {
-    background: rgba(56, 189, 248, 0.2);
+  .btn-card-adjust {
+    flex: 2;
+    background: rgba(56, 189, 248, 0.22);
     color: var(--brass);
-    border: 1px solid rgba(56, 189, 248, 0.4) !important;
+    border: 1px solid rgba(56, 189, 248, 0.45) !important;
+  }
+
+  .btn-card-tier {
+    flex: 1;
+    background: rgba(255, 215, 0, 0.16);
+    color: var(--gold-color);
+    border: 1px solid rgba(255, 215, 0, 0.4) !important;
+  }
+
+  .btn-card-move {
+    background: rgba(255, 255, 255, 0.08);
+    color: #E2E8F0;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    min-width: 28px;
   }
 
   .btn-card-delete {
+    flex: 1;
     background: rgba(239, 68, 68, 0.2);
     color: #FCA5A5;
     border: 1px solid rgba(239, 68, 68, 0.4) !important;
@@ -1343,7 +1365,7 @@
 
   /* Agent Dashboard Window Styles */
   .agent-dashboard-modal {
-    max-width: 680px;
+    max-width: 720px;
     border: 1px solid rgba(56, 189, 248, 0.45);
   }
 
@@ -1389,13 +1411,26 @@
   }
 
   .photo-preview-thumb {
-    width: 54px;
-    height: 54px;
+    width: 60px;
+    height: 60px;
     border-radius: 8px;
     object-fit: cover;
     border: 1px solid var(--brass);
     background: rgba(255, 255, 255, 0.05);
     flex-shrink: 0;
+  }
+
+  .url-status-hint {
+    font-size: 0.68rem;
+    color: var(--muted);
+  }
+
+  .url-status-hint.ok {
+    color: var(--whatsapp-green);
+  }
+
+  .url-status-hint.err {
+    color: #FCA5A5;
   }
 
   .gallery-manage-box {
@@ -1499,10 +1534,18 @@
     border-top: 1px solid var(--line);
   }
 
+  .saved-agent-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+
   .saved-agent-list h3 {
     font-size: 0.92rem;
     color: var(--brass);
-    margin-bottom: 8px;
   }
 
   .saved-agent-row {
@@ -1525,11 +1568,12 @@
   }
 
   .saved-agent-meta img {
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
     border-radius: 6px;
     object-fit: cover;
     flex-shrink: 0;
+    background: #1C2541;
   }
 
   .saved-agent-info {
@@ -1552,12 +1596,13 @@
 
   .saved-agent-btns {
     display: flex;
-    gap: 5px;
+    gap: 4px;
+    flex-wrap: wrap;
     flex-shrink: 0;
   }
 
   .saved-agent-btns button {
-    padding: 4px 8px;
+    padding: 4px 7px;
     border-radius: 5px;
     font-size: 0.7rem;
     font-weight: 600;
@@ -2026,6 +2071,35 @@
     'tech-page': 'all'
   };
 
+  /**
+   * Normalizes image URLs so pasted links (including Google Drive links, http links,
+   * or extra whitespace) load reliably on every device.
+   */
+  function normalizeImageUrl(rawUrl) {
+    if (!rawUrl || typeof rawUrl !== 'string') return '';
+    let url = rawUrl.trim();
+    if (!url) return '';
+    if (url.startsWith('data:')) return url;
+
+    // Upgrade http:// to https:// so mobile browsers do not block mixed content
+    if (url.startsWith('http://')) {
+      url = 'https://' + url.slice(7);
+    } else if (!url.startsWith('https://') && !url.startsWith('/') && !url.startsWith('./')) {
+      url = 'https://' + url;
+    }
+
+    // Convert Google Drive share links into direct embeddable image URLs
+    const driveFileMatch = url.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
+    const driveOpenMatch = url.match(/drive\.google\.com\/open\?id=([a-zA-Z0-9_-]+)/);
+    const driveUcMatch = url.match(/drive\.google\.com\/uc\?.*id=([a-zA-Z0-9_-]+)/);
+    const driveId = (driveFileMatch && driveFileMatch[1]) || (driveOpenMatch && driveOpenMatch[1]) || (driveUcMatch && driveUcMatch[1]);
+    if (driveId) {
+      return `https://lh3.googleusercontent.com/d/${driveId}=w1000`;
+    }
+
+    return url;
+  }
+
   function getStoredWorkers() {
     return firestoreWorkers;
   }
@@ -2052,20 +2126,30 @@
           ? data.apps.split(",").map(s => s.trim()).filter(Boolean)
           : ["Specialist"]);
 
-    const resolvedPhoto = (typeof data.photoUrl === "string" && data.photoUrl.trim())
+    const rawPhoto = (typeof data.photoUrl === "string" && data.photoUrl.trim())
       ? data.photoUrl.trim()
-      : ((typeof data.photo === "string" && data.photo.trim()) ? data.photo.trim() : DEFAULT_AVATAR);
+      : ((typeof data.photo === "string" && data.photo.trim()) ? data.photo.trim() : '');
+
+    const resolvedPhoto = normalizeImageUrl(rawPhoto) || DEFAULT_AVATAR;
 
     const createdMs = data.createdAt && typeof data.createdAt.toMillis === "function"
       ? data.createdAt.toMillis()
-      : (typeof data.createdAt === "number" ? data.createdAt : Date.now());
+      : (typeof data.createdAt === "number" ? data.createdAt : 0);
+
+    const sortOrder = typeof data.sortOrder === "number" ? data.sortOrder : null;
+
+    const rawGallery = Array.isArray(data.gallery) ? data.gallery : [];
+    const normalizedGallery = rawGallery
+      .map(item => normalizeImageUrl(String(item || '')))
+      .filter(Boolean);
 
     return {
       id: docId,
       createdMs,
+      sortOrder,
       category: data.gridId || mapCategoryNameToGrid(data.category),
       photo: resolvedPhoto,
-      gallery: Array.isArray(data.gallery) ? data.gallery.filter(Boolean) : [],
+      gallery: normalizedGallery,
       name: data.name || "Specialist",
       age: data.age || "",
       location: data.place || data.location || "Kannur",
@@ -2078,6 +2162,19 @@
       badge: (data.badge || "silver").toLowerCase(),
       description: data.details || data.description || ""
     };
+  }
+
+  function sortWorkersForDisplay(list) {
+    return [...list].sort((a, b) => {
+      const aHasOrder = typeof a.sortOrder === 'number';
+      const bHasOrder = typeof b.sortOrder === 'number';
+      if (aHasOrder && bHasOrder && a.sortOrder !== b.sortOrder) {
+        return a.sortOrder - b.sortOrder;
+      }
+      if (aHasOrder && !bHasOrder) return -1;
+      if (!aHasOrder && bHasOrder) return 1;
+      return (b.createdMs || 0) - (a.createdMs || 0);
+    });
   }
 
   function updateAgentUIState() {
@@ -2185,6 +2282,13 @@
     img.src = dataUrl;
   }
 
+  function setPhotoUrlStatus(message, state = '') {
+    const hint = document.getElementById('agentPhotoUrlStatus');
+    if (!hint) return;
+    hint.textContent = message;
+    hint.className = 'url-status-hint' + (state ? ' ' + state : '');
+  }
+
   function handleAgentPhotoUpload(event) {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -2193,21 +2297,38 @@
       compressImageDataUrl(e.target.result, 320, 0.72, (compressed) => {
         tempAgentPhotoData = compressed;
         document.getElementById('agentPhotoUrlInput').value = '';
-        document.getElementById('agentPhotoPreview').src = tempAgentPhotoData;
+        const preview = document.getElementById('agentPhotoPreview');
+        preview.onerror = null;
+        preview.src = tempAgentPhotoData;
+        setPhotoUrlStatus('Uploaded image ready', 'ok');
       });
     };
     reader.readAsDataURL(file);
   }
 
   function handleAgentPhotoUrlInput(value) {
-    const trimmed = (value || '').trim();
-    if (trimmed) {
-      tempAgentPhotoData = trimmed;
+    const normalized = normalizeImageUrl(value);
+    const preview = document.getElementById('agentPhotoPreview');
+    if (normalized) {
+      tempAgentPhotoData = normalized;
       document.getElementById('agentPhotoInput').value = '';
-      document.getElementById('agentPhotoPreview').src = trimmed;
+      setPhotoUrlStatus('Checking image URL...', '');
+      preview.onload = () => {
+        if (preview.src !== DEFAULT_AVATAR) {
+          setPhotoUrlStatus('Image URL loaded properly', 'ok');
+        }
+      };
+      preview.onerror = () => {
+        setPhotoUrlStatus('Could not load image from this URL — check link permissions', 'err');
+        preview.onerror = null;
+        preview.src = DEFAULT_AVATAR;
+      };
+      preview.src = normalized;
     } else {
       tempAgentPhotoData = DEFAULT_AVATAR;
-      document.getElementById('agentPhotoPreview').src = DEFAULT_AVATAR;
+      preview.onerror = null;
+      preview.src = DEFAULT_AVATAR;
+      setPhotoUrlStatus('Paste direct image URL or upload file', '');
     }
   }
 
@@ -2216,7 +2337,7 @@
     const url = (input.value || '').trim();
     if (!url) return;
     url.split(',').forEach(part => {
-      const cleanUrl = part.trim();
+      const cleanUrl = normalizeImageUrl(part);
       if (cleanUrl && !tempAgentGallery.includes(cleanUrl)) {
         tempAgentGallery.push(cleanUrl);
       }
@@ -2254,7 +2375,7 @@
       const item = document.createElement('div');
       item.className = 'gallery-preview-item';
       item.innerHTML = `
-        <img src="${escapeHtml(src)}" alt="Gallery ${idx + 1}" onclick="openImageModal(this.src)">
+        <img src="${escapeHtml(src)}" alt="Gallery ${idx + 1}" referrerpolicy="no-referrer" onerror="this.src='${DEFAULT_AVATAR}'" onclick="openImageModal(this.src)">
         <button type="button" onclick="removeAgentGalleryItem(${idx})" title="Remove">&times;</button>
       `;
       container.appendChild(item);
@@ -2301,7 +2422,10 @@
     document.getElementById('agentCancelEditBtn').style.display = 'none';
     document.getElementById('agentPhotoInput').value = '';
     document.getElementById('agentPhotoUrlInput').value = '';
-    document.getElementById('agentPhotoPreview').src = DEFAULT_AVATAR;
+    const preview = document.getElementById('agentPhotoPreview');
+    preview.onerror = null;
+    preview.src = DEFAULT_AVATAR;
+    setPhotoUrlStatus('Paste direct image URL or upload file', '');
     document.getElementById('agentGalleryUrlInput').value = '';
     document.getElementById('agentGalleryFilesInput').value = '';
     document.getElementById('agentCategory').value = 'editors-grid';
@@ -2315,6 +2439,7 @@
     document.getElementById('agentPriceAmount').value = '';
     document.getElementById('agentPriceUnit').value = 'per project';
     document.getElementById('agentBadge').value = 'gold';
+    document.getElementById('agentSortOrder').value = '';
     document.getElementById('agentDescription').value = '';
     renderAgentAppChips();
     renderAgentGalleryPreviews();
@@ -2334,7 +2459,7 @@
       addAgentGalleryUrl();
     }
 
-    const typedPhotoUrl = document.getElementById('agentPhotoUrlInput').value.trim();
+    const typedPhotoUrl = normalizeImageUrl(document.getElementById('agentPhotoUrlInput').value);
     if (typedPhotoUrl) {
       tempAgentPhotoData = typedPhotoUrl;
     }
@@ -2349,6 +2474,8 @@
     const priceAmount = document.getElementById('agentPriceAmount').value.trim();
     const priceUnit = document.getElementById('agentPriceUnit').value;
     const badge = document.getElementById('agentBadge').value;
+    const rawOrder = document.getElementById('agentSortOrder').value.trim();
+    const sortOrder = rawOrder !== '' && !isNaN(Number(rawOrder)) ? Number(rawOrder) : null;
     const details = document.getElementById('agentDescription').value.trim();
 
     if (!name || !place || !contact) {
@@ -2365,6 +2492,8 @@
       ? (priceAmount.startsWith('₹') ? priceAmount : `₹${priceAmount}`)
       : '';
 
+    const finalPhoto = normalizeImageUrl(tempAgentPhotoData) || DEFAULT_AVATAR;
+
     const payload = {
       name,
       category: mapGridToCategoryName(gridCategory),
@@ -2372,7 +2501,8 @@
       place,
       age,
       contact,
-      photoUrl: tempAgentPhotoData || DEFAULT_AVATAR,
+      photoUrl: finalPhoto,
+      photo: finalPhoto,
       gallery: [...tempAgentGallery],
       job,
       experience,
@@ -2380,6 +2510,7 @@
       price: formattedPrice,
       priceUnit,
       badge,
+      sortOrder,
       details
     };
 
@@ -2389,10 +2520,10 @@
       }
       if (editingWorkerId) {
         await window.firebaseDbActions.updateProfile(editingWorkerId, payload);
-        showToast('Profile updated — visible to everyone!', 'success');
+        showToast('Profile updated — visible on every phone!', 'success');
       } else {
         await window.firebaseDbActions.addProfile(payload);
-        showToast('Profile saved — visible to everyone!', 'success');
+        showToast('Profile saved — visible on every phone!', 'success');
       }
       resetAgentForm();
     } catch (err) {
@@ -2415,11 +2546,18 @@
     tempAgentApps = Array.isArray(w.apps) ? [...w.apps] : [];
     tempAgentGallery = Array.isArray(w.gallery) ? [...w.gallery] : [];
 
-    document.getElementById('agentFormHeading').textContent = `Edit Profile: ${w.name}`;
+    document.getElementById('agentFormHeading').textContent = `Adjust Profile: ${w.name}`;
     document.getElementById('agentSaveBtn').textContent = 'Update Profile';
     document.getElementById('agentCancelEditBtn').style.display = 'inline-block';
-    document.getElementById('agentPhotoPreview').src = tempAgentPhotoData;
-    document.getElementById('agentPhotoUrlInput').value = (w.photo && !w.photo.startsWith('data:')) ? w.photo : '';
+
+    const preview = document.getElementById('agentPhotoPreview');
+    preview.onerror = () => { preview.onerror = null; preview.src = DEFAULT_AVATAR; };
+    preview.src = tempAgentPhotoData;
+
+    const hasExternalUrl = w.photo && !w.photo.startsWith('data:');
+    document.getElementById('agentPhotoUrlInput').value = hasExternalUrl ? w.photo : '';
+    setPhotoUrlStatus(hasExternalUrl ? 'Image URL loaded' : 'Using saved photo', hasExternalUrl ? 'ok' : '');
+
     document.getElementById('agentCategory').value = w.category || 'editors-grid';
     document.getElementById('agentName').value = w.name || '';
     document.getElementById('agentAge').value = w.age || '';
@@ -2430,6 +2568,7 @@
     document.getElementById('agentPriceAmount').value = (w.priceAmount || '').replace(/^₹/, '');
     document.getElementById('agentPriceUnit').value = w.priceUnit || 'per project';
     document.getElementById('agentBadge').value = w.badge || 'silver';
+    document.getElementById('agentSortOrder').value = typeof w.sortOrder === 'number' ? w.sortOrder : '';
     document.getElementById('agentDescription').value = w.description || '';
     renderAgentAppChips();
     renderAgentGalleryPreviews();
@@ -2439,6 +2578,47 @@
       modal.classList.add('active');
     }
     modal.querySelector('.modal').scrollTop = 0;
+  }
+
+  async function toggleWorkerBadgeQuick(workerId) {
+    if (!isAgentMode || !window.firebaseDbActions) return;
+    const w = getStoredWorkers().find(item => item.id === workerId);
+    if (!w) return;
+    const nextBadge = w.badge === 'gold' ? 'silver' : 'gold';
+    try {
+      await window.firebaseDbActions.updateProfile(workerId, { badge: nextBadge });
+      showToast(`Changed ${w.name} to ${nextBadge.toUpperCase()} tier`, 'success');
+    } catch (err) {
+      alert('Failed to adjust badge: ' + (err.message || err));
+    }
+  }
+
+  async function moveWorkerOrder(workerId, direction) {
+    if (!isAgentMode || !window.firebaseDbActions) return;
+    const target = getStoredWorkers().find(item => item.id === workerId);
+    if (!target) return;
+
+    const sameCategory = sortWorkersForDisplay(
+      getStoredWorkers().filter(w => w.category === target.category)
+    );
+    const idx = sameCategory.findIndex(w => w.id === workerId);
+    const swapIdx = idx + direction;
+    if (idx < 0 || swapIdx < 0 || swapIdx >= sameCategory.length) return;
+
+    const temp = sameCategory[idx];
+    sameCategory[idx] = sameCategory[swapIdx];
+    sameCategory[swapIdx] = temp;
+
+    try {
+      await Promise.all(
+        sameCategory.map((item, position) =>
+          window.firebaseDbActions.updateProfile(item.id, { sortOrder: position + 1 })
+        )
+      );
+      showToast('Profile order adjusted', 'success');
+    } catch (err) {
+      alert('Failed to reorder profiles: ' + (err.message || err));
+    }
   }
 
   async function deleteAgentWorker(workerId) {
@@ -2472,25 +2652,29 @@
   function renderAgentSavedList() {
     const container = document.getElementById('agentSavedProfilesList');
     if (!container) return;
-    const workers = getStoredWorkers();
+    const workers = sortWorkersForDisplay(getStoredWorkers());
     if (!workers.length) {
       container.innerHTML = '<p style="font-size:0.76rem;color:var(--muted);">No saved worker profiles yet. Use the form above to add one.</p>';
       return;
     }
     container.innerHTML = '';
-    workers.forEach(w => {
+    workers.forEach((w, idx) => {
       const row = document.createElement('div');
       row.className = 'saved-agent-row';
+      const orderBadge = typeof w.sortOrder === 'number' ? `#${w.sortOrder} • ` : '';
       row.innerHTML = `
         <div class="saved-agent-meta">
-          <img src="${escapeHtml(w.photo || DEFAULT_AVATAR)}" alt="${escapeHtml(w.name)}">
+          <img src="${escapeHtml(w.photo || DEFAULT_AVATAR)}" alt="${escapeHtml(w.name)}" referrerpolicy="no-referrer" onerror="this.src='${DEFAULT_AVATAR}'">
           <div class="saved-agent-info">
-            <strong>${escapeHtml(w.name)} (${(w.badge || 'silver').toUpperCase()})</strong>
+            <strong>${orderBadge}${escapeHtml(w.name)} (${(w.badge || 'silver').toUpperCase()})</strong>
             <span>${escapeHtml(getCategoryLabel(w.category))} • 📍 ${escapeHtml(w.location)}</span>
           </div>
         </div>
         <div class="saved-agent-btns">
-          <button type="button" class="btn-card-edit" onclick="editAgentWorker('${w.id}')">Edit</button>
+          <button type="button" class="btn-card-move" onclick="moveWorkerOrder('${w.id}', -1)" title="Move Up" ${idx === 0 ? 'disabled' : ''}>↑</button>
+          <button type="button" class="btn-card-move" onclick="moveWorkerOrder('${w.id}', 1)" title="Move Down" ${idx === workers.length - 1 ? 'disabled' : ''}>↓</button>
+          <button type="button" class="btn-card-tier" onclick="toggleWorkerBadgeQuick('${w.id}')" title="Switch Gold/Silver">★ Tier</button>
+          <button type="button" class="btn-card-adjust" onclick="editAgentWorker('${w.id}')">Adjust</button>
           <button type="button" class="btn-card-delete" onclick="deleteAgentWorker('${w.id}')">Delete</button>
         </div>
       `;
@@ -2522,7 +2706,7 @@
       ? `<div class="apps-section">
           <div class="apps-section-title">Gallery</div>
           <div class="pro-gallery-strip">
-            ${galleryItems.map((imgSrc, i) => `<img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(w.name)} work ${i + 1}" class="pro-gallery-thumb" onclick="openImageModal(this.src)">`).join('')}
+            ${galleryItems.map((imgSrc, i) => `<img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(w.name)} work ${i + 1}" class="pro-gallery-thumb" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'" onclick="openImageModal(this.src)">`).join('')}
           </div>
         </div>`
       : '';
@@ -2538,7 +2722,7 @@
       </button>
       <div class="pro-card-header">
         <div class="profile-header-flex">
-          <img src="${escapeHtml(w.photo || DEFAULT_AVATAR)}" alt="${escapeHtml(w.name)}" class="hemin-photo-img" onclick="openImageModal(this.src)">
+          <img src="${escapeHtml(w.photo || DEFAULT_AVATAR)}" alt="${escapeHtml(w.name)}" class="hemin-photo-img" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='${DEFAULT_AVATAR}'" onclick="openImageModal(this.src)">
           <div class="pro-info">
             <h3>${escapeHtml(w.name)}</h3>
             <div class="place">📍 ${escapeHtml(w.location)}${ageText}</div>
@@ -2566,7 +2750,10 @@
         </div>
       </div>
       <div class="agent-card-actions">
-        <button type="button" class="btn-card-edit" onclick="editAgentWorker('${w.id}')">✏️ Edit Profile</button>
+        <button type="button" class="btn-card-move" onclick="moveWorkerOrder('${w.id}', -1)" title="Move Up">↑</button>
+        <button type="button" class="btn-card-move" onclick="moveWorkerOrder('${w.id}', 1)" title="Move Down">↓</button>
+        <button type="button" class="btn-card-tier" onclick="toggleWorkerBadgeQuick('${w.id}')" title="Switch Gold / Silver">★ Tier</button>
+        <button type="button" class="btn-card-adjust" onclick="editAgentWorker('${w.id}')">⚙️ Adjust</button>
         <button type="button" class="btn-card-delete" onclick="deleteAgentWorker('${w.id}')">🗑️ Delete</button>
       </div>
     `;
@@ -2576,7 +2763,7 @@
   function renderAllAgentProfiles() {
     document.querySelectorAll('.agent-rendered-card').forEach(el => el.remove());
 
-    const workers = getStoredWorkers();
+    const workers = sortWorkersForDisplay(getStoredWorkers());
     workers.forEach(w => {
       const targetGrid = document.getElementById(w.category || 'editors-grid');
       if (targetGrid) {
@@ -2871,6 +3058,7 @@
     photoUrl = DEFAULT_AVATAR
   ) {
     if (!window.firebaseDbActions) return;
+    const normalizedPhoto = normalizeImageUrl(photoUrl) || DEFAULT_AVATAR;
     await window.firebaseDbActions.addProfile({
       name,
       category: mapGridToCategoryName(gridId),
@@ -2878,7 +3066,8 @@
       place,
       age: '',
       contact: phone,
-      photoUrl,
+      photoUrl: normalizedPhoto,
+      photo: normalizedPhoto,
       gallery: [],
       job: role,
       experience: exp,
@@ -2886,6 +3075,7 @@
       price: '',
       priceUnit: '',
       badge: tier,
+      sortOrder: null,
       details: ''
     });
   }
@@ -3905,7 +4095,7 @@
     <div class="agent-dash-topbar">
       <div>
         <h2 id="agentFormHeading">Add Worker Profile</h2>
-        <div class="modal-subtitle" style="margin-bottom:0;">Manage live Firestore specialist profiles</div>
+        <div class="modal-subtitle" style="margin-bottom:0;">Manage & adjust live Firestore specialist profiles</div>
       </div>
       <div class="agent-dash-actions">
         <button type="button" class="btn-logout" onclick="logoutAgentMode()">Logout</button>
@@ -3927,8 +4117,9 @@
         <label>Person Photo (Paste Image URL or Upload File)</label>
         <div class="photo-upload-box">
           <img id="agentPhotoPreview" src="" alt="Preview" class="photo-preview-thumb">
-          <div style="display:flex;flex-direction:column;gap:6px;width:100%;">
-            <input type="url" id="agentPhotoUrlInput" placeholder="Paste profile image URL (https://...)" oninput="handleAgentPhotoUrlInput(this.value)">
+          <div style="display:flex;flex-direction:column;gap:5px;width:100%;">
+            <input type="text" id="agentPhotoUrlInput" placeholder="Paste profile image URL (https://... or Google Drive link)" oninput="handleAgentPhotoUrlInput(this.value)">
+            <span id="agentPhotoUrlStatus" class="url-status-hint">Paste direct image URL or upload file</span>
             <input type="file" id="agentPhotoInput" accept="image/*" onchange="handleAgentPhotoUpload(event)">
           </div>
         </div>
@@ -3938,7 +4129,7 @@
         <label>Gallery Photos (Add Image URLs or Upload Files)</label>
         <div class="gallery-manage-box">
           <div class="app-chip-input-row">
-            <input type="url" id="agentGalleryUrlInput" placeholder="Paste gallery image URL (https://...)" onkeydown="if(event.key==='Enter'){event.preventDefault();addAgentGalleryUrl();}">
+            <input type="text" id="agentGalleryUrlInput" placeholder="Paste gallery image URL (https://...)" onkeydown="if(event.key==='Enter'){event.preventDefault();addAgentGalleryUrl();}">
             <button type="button" onclick="addAgentGalleryUrl()">+ Add URL</button>
           </div>
           <input type="file" id="agentGalleryFilesInput" accept="image/*" multiple onchange="handleAgentGalleryFiles(event)">
@@ -4004,12 +4195,18 @@
         </div>
       </div>
 
-      <div class="form-group">
-        <label>Badge Tier *</label>
-        <select id="agentBadge">
-          <option value="gold">Gold Badge</option>
-          <option value="silver">Silver Badge</option>
-        </select>
+      <div class="form-row-2">
+        <div class="form-group">
+          <label>Badge Tier *</label>
+          <select id="agentBadge">
+            <option value="gold">Gold Badge</option>
+            <option value="silver">Silver Badge</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Display Position / Priority</label>
+          <input type="number" id="agentSortOrder" min="1" placeholder="e.g. 1 (optional)">
+        </div>
       </div>
 
       <div class="form-group">
@@ -4018,13 +4215,16 @@
       </div>
 
       <div class="modal-actions">
-        <button type="button" id="agentCancelEditBtn" class="btn-cancel" style="display:none;" onclick="resetAgentForm()">Cancel Edit</button>
+        <button type="button" id="agentCancelEditBtn" class="btn-cancel" style="display:none;" onclick="resetAgentForm()">Cancel Adjust</button>
         <button type="submit" id="agentSaveBtn" class="btn-submit">Save Profile</button>
       </div>
     </form>
 
     <div class="saved-agent-list">
-      <h3>Live Firestore Worker Profiles</h3>
+      <div class="saved-agent-list-header">
+        <h3>Live Firestore Worker Profiles (Adjust Order, Tier & Details)</h3>
+        <button type="button" class="btn-nav" style="flex:0 0 auto;padding:4px 10px;" onclick="window.firebaseDbActions && window.firebaseDbActions.refreshProfiles()">↻ Sync Now</button>
+      </div>
       <div id="agentSavedProfilesList"></div>
     </div>
   </div>
@@ -4046,23 +4246,16 @@
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-analytics.js";
   import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js";
   import {
-    getFirestore as getFirestoreV13,
-    collection as collectionV13,
+    getFirestore,
+    collection,
     addDoc,
+    getDocs,
     updateDoc,
     deleteDoc,
     doc,
     onSnapshot,
-    query as queryV13,
-    orderBy as orderByV13,
     serverTimestamp
   } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-firestore.js";
-  import {
-    getDocs,
-    collection,
-    query,
-    orderBy
-  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyBhtMbUquGcJ8HllEGO5Kzhjdl6H63ouss",
@@ -4074,68 +4267,50 @@
     measurementId: "G-7RC2SVEMB1"
   };
 
-  // Initialize Firebase
+  // Single unified Firebase v13.4.0 initialization
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
   const auth = getAuth(app);
-  const db = getFirestoreV13(app);
-  const profilesCol = collectionV13(db, "profiles");
+  const db = getFirestore(app);
+  const profilesCol = collection(db, "profiles");
 
   function syncWorkersList(workers) {
-    firestoreWorkers = workers;
+    firestoreWorkers = sortWorkersForDisplay(workers);
     renderAllAgentProfiles();
     if (isAgentMode) {
       renderAgentSavedList();
     }
   }
 
+  // Fetch ALL documents directly without orderBy filtering out docs missing createdAt
   async function loadProfilesNow() {
     try {
-      const snap = await getDocs(query(collection(db, "profiles"), orderBy("createdAt", "desc")));
-      const allSnap = await getDocs(collection(db, "profiles"));
-
-      const mapById = new Map();
-      snap.forEach(docSnap => {
-        const p = docSnap.data();
-        mapById.set(docSnap.id, normalizeFirestoreWorker(docSnap.id, p));
-      });
-      // Ensure any doc without createdAt is still visible to everyone
+      const allSnap = await getDocs(profilesCol);
+      const list = [];
       allSnap.forEach(docSnap => {
-        if (!mapById.has(docSnap.id)) {
-          mapById.set(docSnap.id, normalizeFirestoreWorker(docSnap.id, docSnap.data()));
-        }
+        list.push(normalizeFirestoreWorker(docSnap.id, docSnap.data()));
       });
-
-      const sorted = Array.from(mapById.values()).sort((a, b) => (b.createdMs || 0) - (a.createdMs || 0));
-      syncWorkersList(sorted);
+      syncWorkersList(list);
     } catch (err) {
-      console.error("getDocs profiles error:", err);
+      console.error("Firestore getDocs error:", err);
+      if (err && err.code === "permission-denied") {
+        showToast("Firestore read blocked by Security Rules — set allow read: if true", "warning");
+      }
     }
   }
 
-  // Real-time listener for all visitor and agent views
-  const profilesQuery = queryV13(profilesCol, orderByV13("createdAt", "desc"));
-  onSnapshot(profilesQuery, (snapshot) => {
-    const mapById = new Map();
-    snapshot.docs.forEach((docSnap) => {
-      mapById.set(docSnap.id, normalizeFirestoreWorker(docSnap.id, docSnap.data()));
-    });
-
-    // Also include any docs added without a resolved createdAt timestamp yet
-    firestoreWorkers.forEach(existing => {
-      if (!mapById.has(existing.id)) {
-        mapById.set(existing.id, existing);
-      }
-    });
-
-    const sorted = Array.from(mapById.values()).sort((a, b) => (b.createdMs || 0) - (a.createdMs || 0));
-    syncWorkersList(sorted);
+  // Real-time listener for every visitor's phone & agent view
+  onSnapshot(profilesCol, (snapshot) => {
+    const list = snapshot.docs.map((docSnap) =>
+      normalizeFirestoreWorker(docSnap.id, docSnap.data())
+    );
+    syncWorkersList(list);
   }, (error) => {
     console.error("Firestore snapshot error:", error);
     loadProfilesNow();
   });
 
-  // Initial load right away so all visitors get profiles immediately
+  // Immediate initial fetch on every device
   loadProfilesNow();
 
   // Firestore CRUD helpers exposed to UI
@@ -4163,7 +4338,7 @@
     refreshProfiles: loadProfilesNow
   };
 
-  // Login button
+  // Agent Login
   async function agentLogin(email, password) {
     const err = document.getElementById('agentLoginError');
     try {
@@ -4184,7 +4359,7 @@
     }
   }
 
-  // Logout button
+  // Agent Logout
   function agentLogout() {
     signOut(auth);
   }
